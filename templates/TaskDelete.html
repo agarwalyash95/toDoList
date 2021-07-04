@@ -1,0 +1,18 @@
+{% extends 'Main.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TaskDelete</title>
+</head>
+<body>
+    <a href="{% url 'tasks' %}"> Go Back</a>
+    <form method="POST" >
+        {% csrf_token %}
+        <p> Do you want to delete it</p>
+        <input type="submit" value="Delete" />
+    </form>
+</body>
+</html>
+{% endblock content %}

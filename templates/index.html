@@ -1,0 +1,39 @@
+{% extends 'Main.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My TO DO List</title>
+</head>
+<body>
+    <h1>MY TO DO LIST</h1>
+    {% if user.is_authenticated %}
+    <li> HELLO, {{ user.first_name }}</li>
+    <li><a href="accounts/logout">logout</a></li>
+    {% endif %}
+    <form method="get">
+        <input type="text" name="searchArea" value="{{search}}">
+        <input type="submit" value="Search">
+    </form>
+    <a href="{% url 'create' %}">Add task </a>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <th>{{task.title}}</th>
+            <th><a href="{% url 'task' task.id %}"> View</a> </th>
+            <th><a href="{% url 'update' task.id %}"> Edit</a> </th>
+            <th><a href="{% url 'delete' task.id %}"> Delete</a> </th>
+        </tr>
+        {%empty %}
+        <h3>No Item in List</h3>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock content %}
