@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
-    template_name = TEMPLATES[0]['DIRS'][0] + '\index.html'
+    template_name = TEMPLATES[0]['DIRS'][0] + '/index.html'
     context_object_name = 'tasks'
 
     def get_context_data(self, **kwargs):
@@ -26,13 +26,13 @@ class TaskList(LoginRequiredMixin, ListView):
 
 class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
-    template_name = TEMPLATES[0]['DIRS'][0] + "\listview.html"
+    template_name = TEMPLATES[0]['DIRS'][0] + "/listview.html"
     context_object_name = 'task'
 
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    template_name = TEMPLATES[0]['DIRS'][0] + "\AddView.html"
+    template_name = TEMPLATES[0]['DIRS'][0] + "/AddView.html"
     fields = ['title', 'description', 'status']
     success_url = reverse_lazy('tasks')
 
@@ -43,7 +43,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    template_name = TEMPLATES[0]['DIRS'][0] + "\AddView.html"
+    template_name = TEMPLATES[0]['DIRS'][0] + "/AddView.html"
     fields = '__all__'
     success_url = reverse_lazy('tasks')
 
@@ -51,5 +51,5 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     context_object_name = 'task'
-    template_name = TEMPLATES[0]['DIRS'][0] + "\TaskDelete.html"
+    template_name = TEMPLATES[0]['DIRS'][0] + "/TaskDelete.html"
     success_url = reverse_lazy('tasks')
