@@ -72,16 +72,20 @@ WSGI_APPLICATION = 'toDoList.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+CERTIFICATE = os.path.join(BASE_DIR, 'DigiCertGlobalRootG2.crt.pem')
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'agarwyyash.mysql.database.azure.com',
-        'USER': 'agarwy@agarwyyash',
+        'HOST': 'agarwy.mysql.database.azure.com',
+        'USER': 'agarwy',
         'PASSWORD': 'Yashpdf1@',
-        'NAME': 'toDo',
+        'NAME': 'todo',
         'default-character-set' :'utf8',
-
+        'PORT':3306,
+'OPTIONS': {
+'ssl': {'ca': CERTIFICATE }
+}
     }
 }
 
